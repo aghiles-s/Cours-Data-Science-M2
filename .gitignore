@@ -15,4 +15,4 @@ Airflow/logs/*
 Airflow/plugins/*
 outline.md
 
-.idea
+.idea/
