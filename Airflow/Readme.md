@@ -68,8 +68,13 @@ make get-credentials
 ```
 
 Login using logged username and password:
-```json
-{"admin": "fdm9NbWagZMnzGnb"}
+Get credentials from the terminal output with the command
+```bash
+docker exec -it airflow-airflow-1 cat /opt/airflow/simple_auth_manager_passwords.json.generated
+```
+if you don't find the file, you can check the directory with the command
+```bash
+docker exec -it airflow-airflow-1 ls /opt/airflow/
 ```
 
 
@@ -134,6 +139,17 @@ download_csv >> clean_csv
 
 ---
 
+### 5️⃣ `weather_etl_dag.py`
+* ✅ Purpose: Get weather data, transform it, and load it into a CSV file
+* 📍 Action: Trigger the DAG and check the output CSV in `data/`
+* 💡 Takeaway: Learn how to use Airflow to automate data extraction, transformation, and loading processes
+
+```python
+dag_id = "weather_etl_dag"
+```
+
+---
+
 ## 🧹 Step 4: Clean Up
 
 When you’re done:
@@ -153,13 +169,14 @@ make clean
 ## 📝 Summary: What You’ve Learned
 
 | Concept                    | Demonstrated In                   |
-| -------------------------- | --------------------------------- |
+|----------------------------|-----------------------------------|
 | DAG structure              | `hello_world.py`                  |
 | Task dependencies          | `multi_step_pipeline.py`          |
 | Conditional branching      | `conditional_pipeline.py`         |
 | Real-world ETL integration | `real_pipeline.py`                |
 | Web UI monitoring          | All DAGs                          |
 | Docker-based setup         | `Makefile`, `docker-compose.yaml` |
+| Get weather data transform and load in CSV            | `weather_etl_dag.py`                |
 
 ---
 

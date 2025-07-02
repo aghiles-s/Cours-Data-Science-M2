@@ -1,6 +1,6 @@
 services:
   airflow:
-    image: apache/airflow:slim-latest-python3.9
+    image: apache/airflow:2.8.2-python3.9
     command: standalone
     environment:
       - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
@@ -13,4 +13,4 @@ services:
       - ./data:/opt/airflow/data
     ports:
       - "8080:8080"
-    restart: always
+    restart: unless-stopped
